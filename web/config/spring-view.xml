@@ -45,8 +45,8 @@
      <!-- 1. Database Setting -->
  	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
  		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
- 		<property name="url" value="jdbc:oracle:thin:@70.12.114.140:1521:xe"/>
- 		<property name="username" value="bowling"/>
+ 		<property name="url" value="jdbc:oracle:thin:@70.12.114.133:1521:xe"/>
+ 		<property name="username" value="car"/>
  		<property name="password" value="111111"/>
  	</bean>
 
