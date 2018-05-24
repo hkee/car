@@ -58,7 +58,7 @@
  	<!-- 3. MyBatis Setting -->
  	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
  		<property name="dataSource" ref="dataSource"/>
- 		<property name="configLocation" value="classpath:com/config/mybatis.xml"/>
+ 		<property name="configLocation" value="classpath:com/mapperxml/mybatis.xml"/>
  	</bean>
  	<!-- 4. Spring Mybatis Connect -->
  	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">

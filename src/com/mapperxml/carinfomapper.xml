@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.CarInfoMapper">
+		
+	<select id="select" parameterType="String" resultType="com.vo.CarInfo">
+		SELECT * FROM car_info WHERE car_num=#{car_num}
+	</select>
+	<insert id="insert" >
+		INSERT INTO car_info VALUES (#{car_num},#{member_seq},#{car_type},#{insurance},#{year},#{ins_register})
+	</insert>
+	<update id="update">
+		UPDATE car_info SET member_seq=#{member_seq},insurance=#{insurance},ins_register=#{ins_register} WHERE car_num=#{car_num}
+	</update>
+	<delete id="delete">
+		DELETE FROM car_info WHERE car_num=#{car_num}
+	</delete>
+
+</mapper>

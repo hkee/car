@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.CarLocationMapper">
+		
+	<select id="select" parameterType="String" resultType="com.vo.CarLocation">
+		SELECT lat,log FROM car_location WHERE car_num=#{car_num}
+	</select>
+	<insert id="insert" >
+		INSERT INTO car_location (car_num,reg_date) VALUES (#{car_num},SYSDATE)
+	</insert>
+	<update id="update">
+		UPDATE car_location SET lat=#{lat},log=#{log},reg_date=SYSDATE WHERE car_num=#{car_num}
+	</update>
+	<delete id="delete">
+		DELETE FROM car_location WHERE car_num=#{car_num}
+	</delete>
+
+</mapper>

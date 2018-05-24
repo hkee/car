@@ -16,6 +16,6 @@
 <a href="itsMe.jsp">Back</a>
 </div>
 
-<% %>
+
 
 

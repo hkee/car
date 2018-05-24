@@ -8,19 +8,19 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		<result column="pwd" property="pwd"/>
 		<result column="name" property="name"/>
 		<result column="tel" property="tel"/>
+		<result column="admin_yn" property="admin_yn"/>
 		<result column="regdate" property="regdate"/>
-		<result column="photo" property="photo"/>
 	</resultMap>
 		
 	<select id="select" parameterType="String" resultMap="memberResult">
-		SELECT id, pwd, name, tel, regdate FROM MEMBER WHERE id=#{obj}
+		SELECT member_seq,id, pwd, name, tel,admin_yn,regdate FROM MEMBER WHERE id=#{obj}
 	</select>
 	<select id="selectLogin" parameterType="hashmap" resultMap="memberResult">
 		<!-- SELECT id, pwd, name, tel, regdate, photo FROM MEMBER WHERE id=  -->
-		SELECT id, pwd, name, tel, regdate FROM MEMBER WHERE id=#{id} AND pwd=#{pwd}
+		SELECT member_seq,id, pwd, name, tel, admin_yn,regdate FROM MEMBER WHERE id=#{id} AND pwd=#{pwd}
 	</select>
 	<insert id="insert" parameterType="Member">
-		INSERT INTO MEMBER VALUES (#{id},#{pwd},#{name},#{tel},SYSDATE,NULL)
+		INSERT INTO MEMBER (member_seq,id,pwd,name,tel,regdate) VALUES (member_SEQ.NEXTVAL,#{id},#{pwd},#{name},#{tel},SYSDATE)
 	</insert>
 	<update id="update" parameterType="Member">
 		UPDATE MEMBER SET pwd=#{pwd},name=#{name},tel=#{tel} WHERE id=#{id}

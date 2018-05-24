@@ -8,6 +8,7 @@ public class Member {
 	private String name;
 	private String tel;
 	private String admin_yn;
+	private String regdate;
 	public int getMember_seq() {
 		return member_seq;
 	}
@@ -43,6 +44,12 @@ public class Member {
 	}
 	public void setAdmin_yn(String admin_yn) {
 		this.admin_yn = admin_yn;
+	}
+	public String getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
 	}
 	
 	

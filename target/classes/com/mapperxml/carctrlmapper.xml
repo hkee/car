@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.CarCtrlMapper">
+		
+	<select id="select" parameterType="String" resultType="com.vo.ControlInfo">
+		SELECT * FROM control_info WHERE car_num=#{car_num}
+	</select>
+	<insert id="insert" >
+		INSERT INTO control_info (car_num) VALUES (#{car_num})
+	</insert>
+	<update id="update">
+		UPDATE control_info SET start_onoff=#{start_onoff},door_onoff=#{door_onoff},heat_lv=#{heat_lv},air_lv=#{door_onoff},elight_onoff=#{elight_onoff},temp=#{temp},reg_date=SYSDATE WHERE car_num=#{car_num}
+	</update>
+	<delete id="delete">
+		DELETE FROM control_info WHERE car_num=#{car_num}
+	</delete>
+
+</mapper>
+   

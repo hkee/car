@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.vo.Member" alias="member"/>
+		<typeAlias type="com.vo.CarInfo" alias="carInfo"/>
+		<typeAlias type="com.vo.CarLocation" alias="carLocation"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="com/mapperxml/membermapper.xml"/>
+		<mapper resource="com/mapperxml/carinfomapper.xml"/>
+		<mapper resource="com/mapperxml/carlocationmapper.xml"/>
+	</mappers>
+</configuration>
+
+
+
+
+
+

@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import com.frame.Dao;
 import com.mapper.MemberMapper;
 import com.vo.Member;
 
-@Service("memberDao")
+@Repository("memberDao")
 public class MemberDao implements Dao<Member, String>{
 	
 	@Autowired
