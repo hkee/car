@@ -1,4 +1,4 @@
-package com.carInfo;
+package com.maintenanceInfo;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import com.mapper.CarInfoMapper;
 import com.vo.CarInfo;
 
 @Repository("carInfoDao")
-public class CarInfoDao {
+public class MaintenanceInfoDao {
 	
 	@Autowired
 	CarInfoMapper mapper;

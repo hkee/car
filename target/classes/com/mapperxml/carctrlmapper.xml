@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INSERT INTO control_info (car_num) VALUES (#{car_num})
 	</insert>
 	<update id="update">
-		UPDATE control_info SET start_onoff=#{start_onoff},door_onoff=#{door_onoff},heat_lv=#{heat_lv},air_lv=#{door_onoff},elight_onoff=#{elight_onoff},temp=#{temp},reg_date=SYSDATE WHERE car_num=#{car_num}
+		 UPDATE control_info SET start_onoff=#{start_onoff},door_onoff=#{door_onoff},heat_lv=#{heat_lv},air_lv=#{air_lv},elight_onoff=#{elight_onoff},temp=#{temp},reg_date=SYSDATE WHERE car_num=#{car_num} 
 	</update>
 	<delete id="delete">
 		DELETE FROM control_info WHERE car_num=#{car_num}

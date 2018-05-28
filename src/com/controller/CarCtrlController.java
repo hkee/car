@@ -10,24 +10,29 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.carLocation.CarLocationBiz;
-import com.vo.CarInfo;
+import com.carCtrl.CarCtrlBiz;
 import com.vo.CarLocation;
+import com.vo.ControlInfo;
 
 @Controller
-public class CarLocationController {
+public class CarCtrlController {
 
 	@Inject
-	private CarLocationBiz biz;
+	private CarCtrlBiz biz;
 	
-	@RequestMapping("readCarloc.do")
-	public void selectCarloc(HttpServletResponse res, @RequestParam("car_num") String car_num) {
+	@RequestMapping("readCarCtrl.do")
+	public void selectCarctrl(HttpServletResponse res, @RequestParam("car_num") String car_num) {
 		PrintWriter out=null;
 		try {
 			out = res.getWriter();
 			//System.out.printf("Call servlet %s \n",car_num);
-			CarLocation cloc = biz.get(car_num);
-			out.println(cloc.getLat()+"/"+cloc.getLog());
+			ControlInfo ctrl = biz.get(car_num);
+			out.println(ctrl.getCar_num()+"/"+ctrl.getStart_onoff()+"/"+
+					ctrl.getDoor_onoff()+"/"+ctrl.getAir_lv()+"/"+
+					ctrl.getHeat_lv()+"/"+ctrl.getElight_onoff()+
+					"/"+ctrl.getTemp()+"/"+ctrl.getReg_date()
+					);
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -39,8 +44,8 @@ public class CarLocationController {
 		
 	}
 	
-	@RequestMapping("registerCarLoc.do")
-	public void registerCarLoc(HttpServletResponse res, String cnum) {
+	@RequestMapping("registerCarCtrl.do")
+	public void registerCarCtrl(HttpServletResponse res, String cnum) {
 		PrintWriter out=null;
 		try {
 			out = res.getWriter();
@@ -58,13 +63,14 @@ public class CarLocationController {
 	}
 	
 	
-	@RequestMapping("updateCarloc.do")
-	public void updateCarloc(HttpServletResponse res, CarLocation cloc ) {
+	@RequestMapping("updateCarCtrl.do")
+	public void updateCarCtrl(HttpServletResponse res, ControlInfo ctrl) {
 		PrintWriter out=null;
 		try {
 			out = res.getWriter();
 			//System.out.printf("Call servlet %s \n",car_num);
-			biz.modify(cloc);
+			biz.get(ctrl.getCar_num());
+			biz.modify(ctrl);
 			out.println("1");
 			/*for(int i=0;i<10;i++) {
 			biz.modify(cloc);
@@ -80,7 +86,7 @@ public class CarLocationController {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (NullPointerException e) {
+		} catch (Exception e) {
 			out.println("0");
 		} finally {
 			out.close();

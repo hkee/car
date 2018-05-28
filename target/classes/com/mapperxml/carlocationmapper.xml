@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INSERT INTO car_location (car_num,reg_date) VALUES (#{car_num},SYSDATE)
 	</insert>
 	<update id="update">
-		UPDATE car_location SET lat=#{lat},log=#{log},reg_date=SYSDATE WHERE car_num=#{car_num}
+		UPDATE car_location SET lat=#{lat},log=#{log},mile=#{mile}, reg_date=SYSDATE WHERE car_num=#{car_num}
 	</update>
 	<delete id="delete">
 		DELETE FROM car_location WHERE car_num=#{car_num}

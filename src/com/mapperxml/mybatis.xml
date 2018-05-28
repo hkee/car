@@ -7,12 +7,14 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 		<typeAlias type="com.vo.Member" alias="member"/>
 		<typeAlias type="com.vo.CarInfo" alias="carInfo"/>
 		<typeAlias type="com.vo.CarLocation" alias="carLocation"/>
+		<typeAlias type="com.vo.ControlInfo" alias="controlInfo"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="com/mapperxml/membermapper.xml"/>
 		<mapper resource="com/mapperxml/carinfomapper.xml"/>
 		<mapper resource="com/mapperxml/carlocationmapper.xml"/>
+		<mapper resource="com/mapperxml/carctrlmapper.xml"/>
 	</mappers>
 </configuration>
 

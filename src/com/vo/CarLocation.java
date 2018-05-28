@@ -4,6 +4,7 @@ public class CarLocation {
 	private String car_num;
 	private double lat;
 	private double log;
+	private int mile;
 	private String reg_date;
 	public String getCar_num() {
 		return car_num;
@@ -28,6 +29,12 @@ public class CarLocation {
 	}
 	public void setReg_date(String reg_date) {
 		this.reg_date = reg_date;
+	}
+	public int getMile() {
+		return mile;
+	}
+	public void setMile(int mile) {
+		this.mile = mile;
 	}
 	
 	

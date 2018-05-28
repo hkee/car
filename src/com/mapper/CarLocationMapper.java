@@ -1,6 +1,5 @@
 package com.mapper;
 
-import com.vo.CarInfo;
 import com.vo.CarLocation;
 
 public interface CarLocationMapper {

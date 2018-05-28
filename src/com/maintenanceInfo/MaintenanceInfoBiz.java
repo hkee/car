@@ -1,4 +1,4 @@
-package com.carInfo;
+package com.maintenanceInfo;
 
 import java.util.List;
 
@@ -12,10 +12,10 @@ import com.carLocation.CarLocationDao;
 import com.vo.CarInfo;
 
 @Service("carInfoBiz")
-public class CarInfoBiz {
+public class MaintenanceInfoBiz {
 
 	@Inject
-	private CarInfoDao dao;
+	private MaintenanceInfoDao dao;
 	
 	@Inject
 	private CarLocationDao locdao;

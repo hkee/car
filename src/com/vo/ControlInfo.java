@@ -4,8 +4,8 @@ public class ControlInfo {
 	private String car_num;
 	private String start_onoff;
 	private String door_onoff;
-	private String heat_onoff;
-	private String air_onoff;
+	private String heat_lv;
+	private String air_lv;
 	private String elight_onoff;
 	private int temp;
 	private String reg_date;
@@ -27,18 +27,20 @@ public class ControlInfo {
 	public void setDoor_onoff(String door_onoff) {
 		this.door_onoff = door_onoff;
 	}
-	public String getHeat_onoff() {
-		return heat_onoff;
+
+	public String getHeat_lv() {
+		return heat_lv;
 	}
-	public void setHeat_onoff(String heat_onoff) {
-		this.heat_onoff = heat_onoff;
+	public void setHeat_lv(String heat_lv) {
+		this.heat_lv = heat_lv;
 	}
-	public String getAir_onoff() {
-		return air_onoff;
+	public String getAir_lv() {
+		return air_lv;
 	}
-	public void setAir_onoff(String air_onoff) {
-		this.air_onoff = air_onoff;
+	public void setAir_lv(String air_lv) {
+		this.air_lv = air_lv;
 	}
+
 	public String getElight_onoff() {
 		return elight_onoff;
 	}

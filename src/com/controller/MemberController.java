@@ -30,12 +30,12 @@ public class MemberController {
 			System.out.printf("Call servlet %s, %S\n",id,pwd);
 			Member itsMe = biz.login(map);
 			System.out.printf("itsMe %s, %S\n",itsMe.getId(),itsMe.getPwd());
-			out.println("1");
+			out.println(itsMe.getMember_seq());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NullPointerException e) {
-			out.println("2");
+			out.println("0");
 		} finally {
 			out.close();
 		}
@@ -54,7 +54,7 @@ public class MemberController {
 			ie.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
-			out.println("2");
+			out.println("0");
 		} finally {
 			out.close();
 		}		

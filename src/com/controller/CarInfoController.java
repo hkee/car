@@ -2,6 +2,7 @@ package com.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.carInfo.CarInfoBiz;
-import com.carLocation.CarLocationBiz;
 import com.vo.CarInfo;
 
 @Controller
@@ -19,6 +19,30 @@ public class CarInfoController {
 
 	@Inject
 	private CarInfoBiz biz;
+	
+	
+	@RequestMapping("allCarinfo.do")
+	public void allCarinfo(HttpServletResponse res, @RequestParam("member_seq") int member_seq) {
+		PrintWriter out=null;
+		try {
+			out = res.getWriter();
+			System.out.printf("Call servlet %s \n",member_seq);
+			List<CarInfo> cinfolist = biz.listUserAll(member_seq);
+			
+			for(int i=0;i<cinfolist.size();i++) {
+				System.out.println(cinfolist.get(i).getCar_num());
+				out.print(cinfolist.get(i).getCar_num()+"/"+cinfolist.get(i).getCar_type()+"/");
+			}
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NullPointerException e) {
+			out.println("0");
+		} finally {
+			out.close();
+		}
+	}
 	
 	@RequestMapping("readCarinfo.do")
 	public void selectCarinfo(HttpServletResponse res, @RequestParam("car_num") String car_num) {
@@ -35,7 +59,7 @@ public class CarInfoController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NullPointerException e) {
-			out.println("2");
+			out.println("0");
 		} finally {
 			out.close();
 		}
@@ -54,7 +78,7 @@ public class CarInfoController {
 			ie.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
-			out.println("2");
+			out.println("0");
 		} finally {
 			out.close();
 		}		
