@@ -1,23 +1,24 @@
 package com.maintenanceInfo;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.mapper.CarInfoMapper;
-import com.vo.CarInfo;
+import com.mapper.MaintenanceInfoMapper;
+import com.vo.MaintenanceInfo;
 
-@Repository("carInfoDao")
+@Repository("maintenanceInfoDao")
 public class MaintenanceInfoDao {
 	
 	@Autowired
-	CarInfoMapper mapper;
+	MaintenanceInfoMapper mapper;
 	
 	
-	public void insert(CarInfo c) {
+	public void insert(HashMap<String,String> map) {
 		// TODO Auto-generated method stub
-		mapper.insert(c);
+		mapper.insert(map);
 	}
 
 	
@@ -27,18 +28,18 @@ public class MaintenanceInfoDao {
 	}
 
 	
-	public void update(CarInfo c) {
+	public void update(MaintenanceInfo c) {
 		// TODO Auto-generated method stub
 		mapper.update(c);
 	}
 
 	
-	public CarInfo select(String s) {
+	public MaintenanceInfo select(String s) {
 		// TODO Auto-generated method stub
 		return mapper.select(s);
 	}
-	public List<CarInfo> listUser(int seq){
-		return mapper.selectUserAll(seq);
+	public List<MaintenanceInfo> listCar(String car_num){
+		return mapper.selectCarAll(car_num);
 	}
 
 	

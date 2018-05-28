@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.carCtrl.CarCtrlDao;
 import com.carLocation.CarLocationDao;
+import com.maintenanceInfo.MaintenanceInfoBiz;
 import com.vo.CarInfo;
 
 @Service("carInfoBiz")
@@ -23,6 +24,9 @@ public class CarInfoBiz {
 	@Inject 
 	private CarCtrlDao ctrldao;
 	
+	@Inject
+	private MaintenanceInfoBiz mtbiz;
+	
 	
 	@Transactional
 	public void register(CarInfo c) {
@@ -30,6 +34,7 @@ public class CarInfoBiz {
 		dao.insert(c);
 		locdao.insert(c.getCar_num());
 		ctrldao.insert(c.getCar_num());
+		mtbiz.register(c.getCar_num());
 		
 	}
 

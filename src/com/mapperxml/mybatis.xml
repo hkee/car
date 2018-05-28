@@ -8,6 +8,8 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 		<typeAlias type="com.vo.CarInfo" alias="carInfo"/>
 		<typeAlias type="com.vo.CarLocation" alias="carLocation"/>
 		<typeAlias type="com.vo.ControlInfo" alias="controlInfo"/>
+		<typeAlias type="com.vo.PartInfo" alias="partInfo"/>
+		<typeAlias type="com.vo.MaintenanceInfo" alias="maintenanceInfo"/>
 	</typeAliases>
 	
 	<mappers>
@@ -15,6 +17,8 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 		<mapper resource="com/mapperxml/carinfomapper.xml"/>
 		<mapper resource="com/mapperxml/carlocationmapper.xml"/>
 		<mapper resource="com/mapperxml/carctrlmapper.xml"/>
+		<mapper resource="com/mapperxml/partinfomapper.xml"/>
+		<mapper resource="com/mapperxml/maintenanceinfomapper.xml"/>
 	</mappers>
 </configuration>
 

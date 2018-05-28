@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.MaintenanceInfoMapper">
+		
+	<select id="select" parameterType="String" resultType="com.vo.MaintenanceInfo">
+		SELECT * FROM maintenance_info WHERE car_num=#{car_num} AND part_id=#{part_id}
+	</select>
+	<select id="selectCarAll" parameterType="String" resultType="com.vo.MaintenanceInfo">
+		SELECT * FROM maintenance_info WHERE car_num=#{car_num}
+	
+	</select>
+	
+	<insert id="insert" >
+		INSERT INTO maintenance_info (main_seq,car_num,part_id) VALUES (maintenance_info_SEQ.NEXTVAL,#{car_num},#{part_id})
+	</insert>
+	<update id="update">
+		UPDATE maintenance_info SET change_time=SYSDATE,change_st=#{change_st},mile=#{mile} WHERE car_num=#{car_num} AND part_id=#{part_id}
+	</update>
+	<delete id="delete">
+		DELETE FROM maintenance_info WHERE car_num=#{car_num}
+	</delete>
+
+</mapper>

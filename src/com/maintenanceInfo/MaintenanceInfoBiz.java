@@ -1,5 +1,6 @@
 package com.maintenanceInfo;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -7,30 +8,34 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.carCtrl.CarCtrlDao;
-import com.carLocation.CarLocationDao;
-import com.vo.CarInfo;
+import com.partInfo.PartInfoDao;
+import com.vo.MaintenanceInfo;
+import com.vo.PartInfo;
 
-@Service("carInfoBiz")
+@Service("maintenanceInfoBiz")
 public class MaintenanceInfoBiz {
 
 	@Inject
 	private MaintenanceInfoDao dao;
 	
-	@Inject
-	private CarLocationDao locdao;
-	
 	@Inject 
-	private CarCtrlDao ctrldao;
-	
+	private PartInfoDao pdao;
 	
 	@Transactional
-	public void register(CarInfo c) {
+	public void register(String car_num) {
 		// TODO Auto-generated method stub
-		dao.insert(c);
-		locdao.insert(c.getCar_num());
-		ctrldao.insert(c.getCar_num());
+		HashMap<String, String> map = new HashMap<>();
+		List<PartInfo>plist=pdao.listAll();
+		for(int  i=0;i<plist.size();i++) {
+			
+			System.out.println(plist.get(i).getPart_name());
+			map.put("car_num", car_num);
+			map.put("part_id", plist.get(i).getPart_id());
+			dao.insert(map);
+			
+		}
 		
+	
 	}
 
 	
@@ -40,19 +45,19 @@ public class MaintenanceInfoBiz {
 	}
 
 
-	public void modify(CarInfo c) {
+	public void modify(MaintenanceInfo c) {
 		// TODO Auto-generated method stub
 		dao.update(c);
 	}
 
 	
-	public CarInfo get(String s) {
+	public MaintenanceInfo get(String s) {
 		// TODO Auto-generated method stub
 		return dao.select(s);
 	}
 
-	public List<CarInfo> listUserAll(int seq){
-		return dao.listUser(seq);
+	public List<MaintenanceInfo> listCarAll(String car_num){
+		return dao.listCar(car_num);
 	}
 
 }
