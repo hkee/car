@@ -1,12 +1,17 @@
+<%@page import="com.vo.CarInfo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
-<%  // 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
-    if (session.getAttribute("signedUser") == null) {
-        response.sendRedirect("login.do");
-    }
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
+
+<%
+	// 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
+	if (session.getAttribute("signedUser") == null) {
+		response.sendRedirect("login.do");
+	}
 %>
-	
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +20,7 @@
 <meta name="description" content="description">
 <meta name="author" content="DevOOPS">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link href="resources/devoops/plugins/bootstrap/bootstrap.css"
 	rel="stylesheet">
 <link href="resources/devoops/plugins/jquery-ui/jquery-ui.min.css"
@@ -45,7 +51,6 @@
 		<![endif]-->
 
 
-</script>
 </head>
 <body>
 	<!--Start Header-->
@@ -76,27 +81,25 @@
 				</div>
 				<div id="top-panel" class="col-xs-12 col-sm-10">
 					<div class="row">
-						<div class="col-xs-4 col-sm-8 top-panel-right" style="float:right;">
+						<div class="col-xs-4 col-sm-8 top-panel-right"
+							style="float: right;">
 
 							<ul class="nav navbar-nav pull-right panel-menu">
 								<li class="hidden-xs"><a href="index.html"
-									class="modal-link"> <i class="fa fa-bell"></i> <span
-										class="badge">7</span>
+									class="modal-link"> <i class="fa fa-bell"></i>
 								</a></li>
 								<li class="hidden-xs"><a class="ajax-link"
-									href="ajax/calendar.html"> <i class="fa fa-calendar"></i> <span
-										class="badge">7</span>
+									href="ajax/calendar.html"> <i class="fa fa-calendar"></i>
 								</a></li>
 								<li class="hidden-xs"><a href="ajax/page_messages.html"
-									class="ajax-link"> <i class="fa fa-envelope"></i> <span
-										class="badge">7</span>
+									class="ajax-link"> <i class="fa fa-envelope"></i>
 								</a></li>
 								<li class="dropdown"><a href="#"
 									class="dropdown-toggle account" data-toggle="dropdown">
-									 <div class="avatar">
-										<img src="resources/devoops/img/lion.jpg" class="img-circle" alt="avatar" />
-									</div>
-									 <i class="fa fa-angle-down pull-right"></i>
+										<div class="avatar">
+											<img src="resources/devoops/img/lion.jpg" class="img-circle"
+												alt="avatar" />
+										</div> <i class="fa fa-angle-down pull-right"></i>
 										<div class="user-mini pull-right">
 											<span class="welcome">Welcome,</span> <span>${sessionScope.signedUser }</span>
 										</div>
@@ -104,10 +107,11 @@
 									<ul class="dropdown-menu">
 										<li><a href="#"> <i class="fa fa-user"></i> <span>Profile</span>
 										</a></li>
-										
+
 										<li><a href="#"> <i class="fa fa-cog"></i> <span>Settings</span>
 										</a></li>
-										<li><a href="logout.do"> <i class="fa fa-power-off"></i> <span>Logout</span>
+										<li><a href="logout.do"> <i class="fa fa-power-off"></i>
+												<span>Logout</span>
 										</a></li>
 									</ul></li>
 							</ul>
@@ -123,7 +127,7 @@
 		<div class="row">
 			<div id="sidebar-left" class="col-xs-2 col-sm-2">
 				<ul class="nav main-menu">
-					<li><a href="ajax/dashboard.html" class="ajax-link"> <i
+					<li><a href="main.do" > <i
 							class="fa fa-dashboard"></i> <span class="hidden-xs">Dashboard</span>
 					</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle">
@@ -154,13 +158,16 @@
 									Tables</a></li>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle">
-							<i class="fa fa-pencil-square-o"></i> <span class="hidden-xs">Forms</span>
+							<i class="fa fa-pencil-square-o"></i> <span class="hidden-xs">Settings</span>
 					</a>
 						<ul class="dropdown-menu">
-							<li><a class="ajax-link" href="ajax/forms_elements.html">Elements</a></li>
-							<li><a class="ajax-link" href="ajax/forms_layouts.html">Layouts</a></li>
-							<li><a class="ajax-link"
-								href="ajax/forms_file_uploader.html">File Uploader</a></li>
+						<%-- <%List<CarInfo> cinfolist =(List<CarInfo>)session.getAttribute("carlist"); %>
+							<li><a class="ajax-link" href="ajax/forms_elements.html"><%=cinfolist.get(1).getCar_num() %></a></li> --%>
+							<c:forEach items="${carlist}" var="car"> 
+							<li><a  href="settingsupply.do?car_num=${car.car_num }">${car.car_type }</a></li>
+							
+							</c:forEach> 
+							
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle">
 							<i class="fa fa-desktop"></i> <span class="hidden-xs">UI
@@ -274,7 +281,7 @@
 			</div>
 			<!--Start Content-->
 			<div id="content" class="col-xs-12 col-sm-10">
-				<div id="about">
+				<!-- <div id="about">
 					<div class="about-inner">
 						<h4 class="page-header">Open-source admin theme for you</h4>
 						<p>DevOOPS team</p>
@@ -291,17 +298,22 @@
 					</div>
 				</div>
 				<div class="preloader">
-					<img src="img/devoops_getdata.gif" class="devoops-getdata"
-						alt="preloader" />
+					 <img src="img/devoops_getdata.gif" class="devoops-getdata"
+						alt="preloader" /> 
 				</div>
-				<div id="ajax-content"></div>
+				<div id="ajax-content"></div> -->
+				<jsp:include page="${center }.jsp"></jsp:include>
 			</div>
 			<!--End Content-->
 		</div>
 	</div>
 	<!--End Container-->
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<!--<script src="http://code.jquery.com/jquery.js"></script>-->
+<!-- 		<script src="http://code.jquery.com/jquery.js"></script> -->
+<!-- <script -->
+<!--   src="https://code.jquery.com/jquery-2.2.4.js" -->
+<!--   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" -->
+<!--   crossorigin="anonymous"></script> -->
 	<script src="resources/devoops/plugins/jquery/jquery.min.js"></script>
 	<script src="resources/devoops/plugins/jquery-ui/jquery-ui.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->

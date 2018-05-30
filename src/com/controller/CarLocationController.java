@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,6 +67,7 @@ public class CarLocationController {
 			//System.out.printf("Call servlet %s \n",car_num);
 			biz.modify(cloc);
 			out.println("1");
+			System.out.println("location call");
 			/*for(int i=0;i<10;i++) {
 			biz.modify(cloc);
 			out.println(cloc.getLat()+"/"+cloc.getLog());

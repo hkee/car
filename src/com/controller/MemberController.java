@@ -3,8 +3,10 @@ package com.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.annotation.Resource;
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,12 +16,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.carInfo.CarInfoBiz;
 import com.frame.Biz;
+import com.vo.CarInfo;
 import com.vo.Member;
 
 @Controller
 public class MemberController {
 
+	@Inject
+	private CarInfoBiz carinfobiz;
 	@Resource(name="memberBiz")
 	Biz<Member, String> biz;
 	
@@ -38,6 +44,8 @@ public class MemberController {
 			System.out.printf("itsMe %s, %S\n",itsMe.getId(),itsMe.getPwd());
 			session.setAttribute("signedUser", itsMe.getId());
 			session.setAttribute("memseq", itsMe.getMember_seq());
+			List<CarInfo> cinfolist = carinfobiz.listUserAll(itsMe.getMember_seq());
+			session.setAttribute("carlist", cinfolist);
 			return "redirect:/main.do";
 		}catch (NullPointerException e) {
 			System.out.println("회원정보가 없습니다");

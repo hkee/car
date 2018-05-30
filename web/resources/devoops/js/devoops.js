@@ -1144,7 +1144,7 @@ function LoadAjaxContent(url){
 			$('.preloader').hide();
 		},
 		error: function (jqXHR, textStatus, errorThrown) {
-			alert(errorThrown);
+			//alert(errorThrown);
 		},
 		dataType: "html",
 		async: false
@@ -3355,10 +3355,12 @@ $(document).ready(function () {
 		setTimeout(MessagesMenuWidth, 250);
 	});
 	var ajax_url = location.hash.replace(/^#/, '');
-	if (ajax_url.length < 1) {
-		ajax_url = 'ajax/dashboard.html';
-	}
-	LoadAjaxContent(ajax_url);
+	
+	//dashboard ajax삭제.................
+//	if (ajax_url.length < 1) {
+//		ajax_url = 'ajax/dashboard.html';
+//	}
+//	LoadAjaxContent(ajax_url);
 	var item = $('.main-menu li a[href$="' + ajax_url + '"]');
 	item.addClass('active-parent active');
 	$('.dropdown:has(li:has(a.active)) > a').addClass('active-parent active');

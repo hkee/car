@@ -8,12 +8,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 		
 	@RequestMapping("/main.do")
-	public String main() {
+	public String main(Model m) {
+		m.addAttribute("center", "settingSupply");
 		return "main";
 	}
-	@RequestMapping("/chart1.do")
-	public String chart1(Model m) {
-		m.addAttribute("center", "chart1");
+	@RequestMapping("/test4.do")
+	public String test4(Model m) {
+		m.addAttribute("center", "test4");
+		return "main";
+	}
+	
+	@RequestMapping("/test.do")
+	public String test() {
+		return "test3";
+	}
+	
+	@RequestMapping("/settingsupply.do")
+	public String chart1(Model m,String car_num) {
+		m.addAttribute("center", "settingSupply");
+		System.out.println(car_num);
 		return "main";
 	}
 	@RequestMapping("/chart2.do")
