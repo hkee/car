@@ -7,6 +7,8 @@ public class MaintenanceInfo {
 	private String car_num;
 	private String part_id;
 	private int mile;
+	private String part_name;
+	
 	public int getMain_seq() {
 		return main_seq;
 	}
@@ -43,6 +45,13 @@ public class MaintenanceInfo {
 	public void setMile(int mile) {
 		this.mile = mile;
 	}
+	public String getPart_name() {
+		return part_name;
+	}
+	public void setPart_name(String part_name) {
+		this.part_name = part_name;
+	}
+	
 	
 }
  

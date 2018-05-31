@@ -32,7 +32,10 @@ public class MaintenanceInfoDao {
 		// TODO Auto-generated method stub
 		mapper.update(c);
 	}
-
+	public void updateST(MaintenanceInfo c) {
+		// TODO Auto-generated method stub
+		mapper.updateST(c);
+	}
 	
 	public MaintenanceInfo select(String s) {
 		// TODO Auto-generated method stub
@@ -42,7 +45,9 @@ public class MaintenanceInfoDao {
 		return mapper.selectCarAll(car_num);
 	}
 
-	
+	public List<MaintenanceInfo> listSt(String car_num){
+		return mapper.selectChangeST(car_num);
+	}
 
 	
 

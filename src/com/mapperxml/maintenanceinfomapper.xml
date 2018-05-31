@@ -7,6 +7,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="select" parameterType="String" resultType="com.vo.MaintenanceInfo">
 		SELECT * FROM maintenance_info WHERE car_num=#{car_num} AND part_id=#{part_id}
 	</select>
+	<select id="selectChangeST" parameterType="String" resultType="com.vo.MaintenanceInfo">
+		select m.main_seq "main_seq", m.change_st "change_st", p.part_name "part_name", m.car_num "car_num" 
+		from MAINTENANCE_INFO m, part_info p where m.PART_ID = p.PART_ID and m.car_num=#{car_num} order by m.main_seq
+	</select>
+	
 	<select id="selectCarAll" parameterType="String" resultType="com.vo.MaintenanceInfo">
 		SELECT * FROM maintenance_info WHERE car_num=#{car_num}
 	
@@ -17,6 +22,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</insert>
 	<update id="update">
 		UPDATE maintenance_info SET change_time=SYSDATE,change_st=#{change_st},mile=#{mile} WHERE car_num=#{car_num} AND part_id=#{part_id}
+	</update>
+	
+	<update id="updateST">
+		UPDATE maintenance_info SET change_st=#{change_st} WHERE main_seq=#{main_seq}
 	</update>
 	<delete id="delete">
 		DELETE FROM maintenance_info WHERE car_num=#{car_num}

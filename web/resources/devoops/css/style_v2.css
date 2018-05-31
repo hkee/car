@@ -843,6 +843,10 @@ ul.DTTT_dropdown.dropdown-menu > li:hover > a {
   color: #f8f8f8;
   border-color: #34786E;
 }
+ .has-primary .help-block, .has-primary .control-label, .has-primary .radio, .has-primary .checkbox, .has-primary .radio-inline, .has-primary .checkbox-inline {color: #496a84;}
+.has-primary .form-control {border-color:  #315D80;}
+ .has-info .help-block, .has-info .control-label, .has-info .radio, .has-info .checkbox, .has-info .radio-inline, .has-info .checkbox-inline {color: #5D91BC;}
+.has-info .form-control {border-color:  #5783A8;}
 .txt-success, .has-success .help-block, .has-success .control-label, .has-success .radio, .has-success .checkbox, .has-success .radio-inline, .has-success .checkbox-inline {color: #45837A;}
 .has-success .form-control {border-color: #34786E;}
 .progress-bar-info .ui-widget-header, .bg-info, .btn-info, .btn-info.disabled, .btn-info[disabled], fieldset[disabled] .btn-info, .btn-info.disabled:hover, .btn-info[disabled]:hover, fieldset[disabled] .btn-info:hover, .btn-info.disabled:focus, .btn-info[disabled]:focus, fieldset[disabled] .btn-info:focus, .btn-info.disabled:active, .btn-info[disabled]:active, fieldset[disabled] .btn-info:active, .btn-info.disabled.active, .btn-info[disabled].active, fieldset[disabled] .btn-info.active, .progress-bar-info,

@@ -9,7 +9,7 @@ public class MainController {
 		
 	@RequestMapping("/main.do")
 	public String main(Model m) {
-		m.addAttribute("center", "settingSupply");
+		m.addAttribute("center", "dash");
 		return "main";
 	}
 	@RequestMapping("/test4.do")
@@ -23,12 +23,7 @@ public class MainController {
 		return "test3";
 	}
 	
-	@RequestMapping("/settingsupply.do")
-	public String chart1(Model m,String car_num) {
-		m.addAttribute("center", "settingSupply");
-		System.out.println(car_num);
-		return "main";
-	}
+	
 	@RequestMapping("/chart2.do")
 	public String chart2(Model m) {
 		m.addAttribute("center", "chart2");

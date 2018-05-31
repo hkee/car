@@ -49,7 +49,10 @@ public class MaintenanceInfoBiz {
 		// TODO Auto-generated method stub
 		dao.update(c);
 	}
-
+	public void modifyST(MaintenanceInfo c) {
+		// TODO Auto-generated method stub
+		dao.updateST(c);
+	}
 	
 	public MaintenanceInfo get(String s) {
 		// TODO Auto-generated method stub
@@ -60,4 +63,7 @@ public class MaintenanceInfoBiz {
 		return dao.listCar(car_num);
 	}
 
+	public List<MaintenanceInfo> listStAll(String car_num){
+		return dao.listSt(car_num);
+	}
 }
