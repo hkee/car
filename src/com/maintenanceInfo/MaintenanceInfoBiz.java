@@ -66,4 +66,7 @@ public class MaintenanceInfoBiz {
 	public List<MaintenanceInfo> listStAll(String car_num){
 		return dao.listSt(car_num);
 	}
+	public List<MaintenanceInfo> listSupply(String car_num){
+		return dao.listSp(car_num);
+	}
 }

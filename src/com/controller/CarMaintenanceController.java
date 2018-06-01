@@ -36,6 +36,26 @@ public class CarMaintenanceController {
 		
 		
 	}
+	
+	@RequestMapping("/diagnosis.do")
+	public String diagnosis(HttpServletResponse res,@RequestParam("car_type") String car_type, @RequestParam("car_num") String car_num,Model m) {
+		m.addAttribute("center", "chartSupply");
+		List<MaintenanceInfo> minfo = biz.listSupply(car_num);
+		m.addAttribute("splist", minfo);
+		for(int i=0;i<minfo.size();i++) {
+			System.out.println(minfo.get(i).getMile());
+		} 
+		return "main";
+	}
+	@RequestMapping("/appdiagnosis.do")
+	public String appdiagnosis(HttpServletResponse res,@RequestParam("car_type") String car_type, @RequestParam("car_num") String car_num,Model m) {
+		List<MaintenanceInfo> minfo = biz.listSupply(car_num);
+		m.addAttribute("splist", minfo);
+
+		return "chartSupply";
+	}
+	
+	
 	@RequestMapping(value="/replaceSt.do", method=RequestMethod.GET)
 	public String replaceST(MaintenanceInfo minfo,Model m) {
 		System.out.println(minfo.getChange_st()+", "+minfo.getMain_seq());
@@ -62,55 +82,7 @@ public class CarMaintenanceController {
 		
 		
 	}
-/*	@RequestMapping("registerCarCtrl.do")
-	public void registerCarCtrl(HttpServletResponse res, String cnum) {
-		PrintWriter out=null;
-		try {
-			out = res.getWriter();
-			biz.register(cnum);
-			out.println("1");
-		} catch (IOException ie) {
-			// TODO Auto-generated catch block
-			ie.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-			out.println("0");
-		} finally {
-			out.close();
-		}		
-	}
-	
-	
-	@RequestMapping("updateCarCtrl.do")
-	public void updateCarCtrl(HttpServletResponse res, ControlInfo ctrl) {
-		PrintWriter out=null;
-		try {
-			out = res.getWriter();
-			//System.out.printf("Call servlet %s \n",car_num);
-			biz.get(ctrl.getCar_num());
-			biz.modify(ctrl);
-			out.println("1");
-			for(int i=0;i<10;i++) {
-			biz.modify(cloc);
-			out.println(cloc.getLat()+"/"+cloc.getLog());
-			cloc.setLat(cloc.getLat()+0.0002);
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			out.println("0");
-		} finally {
-			out.close();
-		}
-		
-	}*/
+
 	
 	
 }

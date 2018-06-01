@@ -48,6 +48,9 @@ public class MaintenanceInfoDao {
 	public List<MaintenanceInfo> listSt(String car_num){
 		return mapper.selectChangeST(car_num);
 	}
+	public List<MaintenanceInfo> listSp(String car_num){
+		return mapper.selectSupply(car_num);
+	}
 
 	
 

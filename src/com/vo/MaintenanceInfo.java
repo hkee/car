@@ -8,6 +8,7 @@ public class MaintenanceInfo {
 	private String part_id;
 	private int mile;
 	private String part_name;
+	private int avg;
 	
 	public int getMain_seq() {
 		return main_seq;
@@ -50,6 +51,12 @@ public class MaintenanceInfo {
 	}
 	public void setPart_name(String part_name) {
 		this.part_name = part_name;
+	}
+	public int getAvg() {
+		return avg;
+	}
+	public void setAvg(int avg) {
+		this.avg = avg;
 	}
 	
 	

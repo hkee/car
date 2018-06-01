@@ -12,6 +12,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		from MAINTENANCE_INFO m, part_info p where m.PART_ID = p.PART_ID and m.car_num=#{car_num} order by m.main_seq
 	</select>
 	
+	<select id="selectSupply" parameterType="String" resultType="com.vo.MaintenanceInfo">
+	select m.change_st, m.part_id, l.mile-m.mile as mile ,p.part_name,  round((l.mile-m.mile) / m.change_st *100) as avg from MAINTENANCE_INFO m, car_location l ,part_info p where m.car_num = l.car_num and p.part_id=m.PART_ID and m.car_num=#{car_num}
+	
+	</select>
+	
+	
 	<select id="selectCarAll" parameterType="String" resultType="com.vo.MaintenanceInfo">
 		SELECT * FROM maintenance_info WHERE car_num=#{car_num}
 	

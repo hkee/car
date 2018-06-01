@@ -39,65 +39,74 @@
 <script src="resources/devoops/plugins/tinymce/tinymce.min.js"></script>
 <script src="resources/devoops/plugins/tinymce/jquery.tinymce.min.js"></script>
 <!-- All functions for this theme + document.ready processing -->
+<style>
+.GaugeMeter {
+  position: Relative;
+  text-align: Center;
+  overflow: Hidden;
+  cursor: Default;
+  display: inline-block;
+}
+
+.GaugeMeter SPAN, .GaugeMeter B {
+  width: 54%;
+  position: Absolute;
+  text-align: Center;
+  display: Inline-Block;
+  color: RGBa(0,0,0,.8);
+  font-weight: 100;
+  font-family: "Open Sans", Arial;
+  overflow: Hidden;
+  white-space: NoWrap;
+  text-overflow: Ellipsis;
+  margin: 0 23%;
+}
+
+.GaugeMeter[data-style="Semi"] B {
+  width: 80%;
+  margin: 0 10%;
+}
+
+.GaugeMeter S, .GaugeMeter U {
+  text-decoration: None;
+  font-size: .60em;
+  font-weight: 200;
+  opacity: .6;
+}
+
+.GaugeMeter B {
+  color: #000;
+  font-weight: 200;
+  opacity: .8;
+}
+</style>
 </head>
 <body style="background-color: white;">
-	<br>
+	
 	<div class="box-content">
 	<%-- <h4 class="page-header">Supply Replacement Cycle Settings :
 		${param.car_num }</h4> --%>
-		 <h4 class="page-header"><label class="control-label" ><font color="#315D80"> Replacement Cycle Settings :
-		${param.car_num }</font></label></h4> 
-
-	<!-- <form class="form-horizontal" role="form">
-
-		<div class="form-group has-primary has-feedback">
-			<label class="col-sm-2 control-label" >엔진오일</label>
-			<div class="col-sm-4">
-				<input type="number" class="form-control" placeholder="Company">
-			</div>
-			<label class="col-sm-2 control-label">미션오일</label>
-			<div class="col-sm-4">
-				<input type="number" class="form-control" placeholder="Company">
-			</div>
-			<label class="col-sm-2 control-label">브레이크오일</label>
-			<div class="col-sm-4">
-				<input type="number" class="form-control" placeholder="Company">
-			</div>
-		</div>
-		<div class="form-group has-info has-feedback">
-			
-			<label class="col-sm-2 control-label">워셔액</label>
-			<div class="col-sm-4">
-				<input type="number" class="form-control" placeholder="Company">
-			</div>
-			<label class="col-sm-2 control-label">부동액</label>
-			<div class="col-sm-4">
-				<input type="number" class="form-control" placeholder="Company">
-			</div>
-		</div>
-		<div class="form-group has-success has-feedback">
-			
-			<label class="col-sm-2 control-label">타이어</label>
-			<div class="col-sm-4">
-				<input type="number" class="form-control" placeholder="Company">
-			</div>
-			<label class="col-sm-2 control-label">베터리</label>
-			<div class="col-sm-4">
-				<input type="number" class="form-control" placeholder="Company">
-			</div>
-			<label class="col-sm-2 control-label">에어컨필터</label>
-			<div class="col-sm-4">
-				<input type="number" class="form-control" placeholder="Company">
-				
-			</div>
-			<label class="col-sm-2 control-label">브레이크패드</label>
-			<div class="col-sm-4">
-				<input type="number" class="form-control" placeholder="Company">
-			</div>
-		</div>
+		 <h3 class="page-header"><label class="control-label" ><font color="#315D80"><i class="fa fa-stethoscope"></i> 차량 상태 진단 :
+		${param.car_type}</font></label></h3> 
+	<center>
+	<button type="button" class="btn btn-info btn-sm">소모품</button>
+<button type="button" class="btn btn-primary btn-sm">차량상태</button>
+<button type="button" class="btn btn-success btn-sm">연&nbsp;&nbsp;&nbsp;비</button>
+</center>
+<c:forEach items="${splist}" var="supplyVo"> 
+<div class="col-xs-12 col-sm-4">
 		
-	</form> -->
-	<table class="table" >
+		<div class="box box-pricing">
+ 					<center><div class="GaugeMeter" id="PreviewGaugeMeter_2" data-percent="${supplyVo.avg}" data-append="%" data-size="200" data-theme="Green-Gold-Red" data-back="RGBa(0,0,0,.1)" data-animate_gauge_colors="1" data-animate_text_colors="1" data-width="15" data-label="${supplyVo.part_name }" data-style="Arch" data-label_color="
+#5783A8"></div> </center>
+<c:if test="${supplyVo.avg >= 100}" ><center><b>소모품을 교체하셨나요?&nbsp;&nbsp;</b><button type="button" class="btn btn-primary btn-xs">&nbsp;네!&nbsp;</button></center></c:if>
+<c:if test="${supplyVo.avg < 100}" ><br><br></c:if>
+		</div>
+</div>
+
+</c:forEach>
+</div>
+	<%-- <table class="table" >
 					<thead>
 						<tr>
 							<th><font color="#5783A8">#</font></th>
@@ -124,12 +133,18 @@
 						
 			
 					</tbody>
-				</table>
-	</div>
+				</table> --%>
+				
+
 	<br>
 	<br>
 	<br>
 	<br>
-	
+		<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="view/GaugeMeter.js"></script>
+<script>
+$(".GaugeMeter").gaugeMeter();
+</script>
 </body>
 </html>

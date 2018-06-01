@@ -7,6 +7,9 @@ public class CarInfo {
 	private String insurance;
 	private String year;
 	private String ins_register;
+	private String reg_num;
+	private int score;
+	
 	public String getCar_num() {
 		return car_num;
 	}
@@ -42,6 +45,18 @@ public class CarInfo {
 	}
 	public void setIns_register(String ins_register) {
 		this.ins_register = ins_register;
+	}
+	public String getReg_num() {
+		return reg_num;
+	}
+	public void setReg_num(String reg_num) {
+		this.reg_num = reg_num;
+	}
+	public int getScore() {
+		return score;
+	}
+	public void setScore(int score) {
+		this.score = score;
 	}
 	
 }

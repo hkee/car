@@ -38,28 +38,99 @@
 	src="resources/devoops/plugins/justified-gallery/jquery.justifiedGallery.min.js"></script>
 <script src="resources/devoops/plugins/tinymce/tinymce.min.js"></script>
 <script src="resources/devoops/plugins/tinymce/jquery.tinymce.min.js"></script>
+
 <!-- All functions for this theme + document.ready processing -->
+
+<style>
+.GaugeMeter {
+  position: Relative;
+  text-align: Center;
+  overflow: Hidden;
+  cursor: Default;
+  display: inline-block;
+}
+
+.GaugeMeter SPAN, .GaugeMeter B {
+  width: 54%;
+  position: Absolute;
+  text-align: Center;
+  display: Inline-Block;
+  color: RGBa(0,0,0,.8);
+  font-weight: 100;
+  font-family: "Open Sans", Arial;
+  overflow: Hidden;
+  white-space: NoWrap;
+  text-overflow: Ellipsis;
+  margin: 0 23%;
+}
+
+.GaugeMeter[data-style="Semi"] B {
+  width: 80%;
+  margin: 0 10%;
+}
+
+.GaugeMeter S, .GaugeMeter U {
+  text-decoration: None;
+  font-size: .60em;
+  font-weight: 200;
+  opacity: .6;
+}
+
+.GaugeMeter B {
+  color: #000;
+  font-weight: 200;
+  opacity: .8;
+}
+</style>
 </head>
 <body style="background-color: white;">
 	<br>
-	<div class="row">	
-	<div class="col-xs-12 col-sm-3">
+	<!-- <div class="row"> -->	
+	<h4 class="page-header"><label class="control-label" ><font color="#315D80">&nbsp;<i class="fa fa-bus"></i> 내차 목록 </font></label></h4> 
+	<c:forEach items="${carlist}" var="car"> 
+	<div class="col-xs-12 col-sm-4">
 		<div class="box box-pricing">
 			<div class="thumbnail">
-				<img src="img/9036958611_fa1bb7f827_m.jpg" alt="">    
+				<img src="resources/devoops/img/${car.car_type}.png" alt="">    
 				<div class="caption">
-					<h5 class="text-center">ROLEX Primus One Gold</h5>
-					<p>This product is awesome. New summer sensation! FREE SHIPPING!</p>
-					<a href="#" class="btn btn-primary">Add to Cart</a> <a href="#" class="btn btn-default">Compare</a>
+					<h4 class="text-center"><font color="#315D80"><b> ${car.car_type}</b> </font></h4>
+					<table class="table" >
+					<tr>
+					<td><font color="#5783A8"><b>차량번호</b> </font></td>
+					<td><b> ${car.reg_num}</b></td>
+					</tr>
+					<tr>
+					<td><font color="#5783A8"><b>연식</b> </font></td>
+					<td><b> ${car.year}</b></td>
+					</tr>
+					<tr>
+					<td><font color="#5783A8"><b>보험회사</b> </font></td>
+					<td><b> ${car.insurance}</b></td>
+					</tr>
+					</table>
+					<label class="control-label"><font color="#5783A8"><b>차량상태지수</b></label>
+					<div class="row">
+					<center>
+					<div class="GaugeMeter" id="PreviewGaugeMeter_4" data-percent="${car.score}" data-append="" data-size="160" data-theme="Blue" data-back="RGBa(0,0,0,.1)" data-animate_gauge_colors="1" data-animate_text_colors="1" data-width="15" data-label="" data-label_color="#FFF" data-stripe="2"></div>
+					</center>
+					</div>
 				</div>
+				
 			</div>
 		</div>
 	</div>
-</div>
+	</c:forEach>
+<!-- </div> -->
 	<br>
 	<br>
 	<br>
 	<br>
-	
+	<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="view/GaugeMeter.js"></script>
+<script>
+$(".GaugeMeter").gaugeMeter();
+</script>
 </body>
+
 </html>

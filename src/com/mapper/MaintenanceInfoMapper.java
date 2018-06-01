@@ -13,4 +13,5 @@ public interface MaintenanceInfoMapper {
 	public void updateST(MaintenanceInfo obj);
 	public List<MaintenanceInfo> selectCarAll(String car_num);
 	public List<MaintenanceInfo> selectChangeST(String car_num);
+	public List<MaintenanceInfo> selectSupply(String car_num);
 }
