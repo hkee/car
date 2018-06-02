@@ -37,6 +37,10 @@ public class CarLocationBiz {
 		return dao.select(s);
 	}
 
+	public int getmile(String s) {
+		// TODO Auto-generated method stub
+		return dao.selectmile(s);
+	}
 
 
 }

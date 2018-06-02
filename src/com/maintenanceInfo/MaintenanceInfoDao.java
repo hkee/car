@@ -36,7 +36,10 @@ public class MaintenanceInfoDao {
 		// TODO Auto-generated method stub
 		mapper.updateST(c);
 	}
-	
+	public void updateMile(MaintenanceInfo c) {
+		// TODO Auto-generated method stub
+		mapper.updateMile(c);
+	}
 	public MaintenanceInfo select(String s) {
 		// TODO Auto-generated method stub
 		return mapper.select(s);

@@ -52,7 +52,7 @@ public class CarMaintenanceController {
 		List<MaintenanceInfo> minfo = biz.listSupply(car_num);
 		m.addAttribute("splist", minfo);
 
-		return "chartSupply";
+		return "appchartSupply";
 	}
 	
 	
@@ -61,6 +61,13 @@ public class CarMaintenanceController {
 		System.out.println(minfo.getChange_st()+", "+minfo.getMain_seq());
 		biz.modifyST(minfo);
 		return "redirect:/settingsupply.do?car_num="+minfo.getCar_num();
+	}
+	
+	@RequestMapping(value="/updateMile.do", method=RequestMethod.GET)
+	public String updateMile(MaintenanceInfo minfo,Model m,@RequestParam("car_type") String car_type) {
+		System.out.println(minfo.getChange_st()+", "+minfo.getMain_seq());
+		biz.modifyMile(minfo);
+		return "redirect:/diagnosis.do?car_num="+minfo.getCar_num()+"&car_type="+car_type;
 	}
 	
 	@RequestMapping(value="/webreplaceSt.do", method=RequestMethod.GET)

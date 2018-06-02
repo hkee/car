@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.carLocation.CarLocationDao;
 import com.partInfo.PartInfoDao;
 import com.vo.MaintenanceInfo;
 import com.vo.PartInfo;
@@ -20,6 +21,8 @@ public class MaintenanceInfoBiz {
 	
 	@Inject 
 	private PartInfoDao pdao;
+	@Inject
+	private CarLocationDao ldao;
 	
 	@Transactional
 	public void register(String car_num) {
@@ -52,6 +55,12 @@ public class MaintenanceInfoBiz {
 	public void modifyST(MaintenanceInfo c) {
 		// TODO Auto-generated method stub
 		dao.updateST(c);
+	}
+	@Transactional
+	public void modifyMile(MaintenanceInfo c) {
+		int mile=ldao.selectmile(c.getCar_num());
+		c.setMile(mile);
+		dao.updateMile(c);
 	}
 	
 	public MaintenanceInfo get(String s) {

@@ -36,7 +36,10 @@ public class CarLocationDao {
 		// TODO Auto-generated method stub
 		return mapper.select(s);
 	}
-
+	public int selectmile(String s) {
+		// TODO Auto-generated method stub
+		return mapper.selectmile(s);
+	}
 	
 
 	

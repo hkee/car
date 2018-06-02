@@ -27,6 +27,10 @@ public class CarCtrlController {
 			out = res.getWriter();
 			//System.out.printf("Call servlet %s \n",car_num);
 			ControlInfo ctrl = biz.get(car_num);
+			System.out.println(ctrl.getCar_num()+"/"+ctrl.getStart_onoff()+"/"+
+					ctrl.getDoor_onoff()+"/"+ctrl.getAir_lv()+"/"+
+					ctrl.getHeat_lv()+"/"+ctrl.getElight_onoff()+
+					"/"+ctrl.getTemp()+"/"+ctrl.getReg_date());
 			out.println(ctrl.getCar_num()+"/"+ctrl.getStart_onoff()+"/"+
 					ctrl.getDoor_onoff()+"/"+ctrl.getAir_lv()+"/"+
 					ctrl.getHeat_lv()+"/"+ctrl.getElight_onoff()+

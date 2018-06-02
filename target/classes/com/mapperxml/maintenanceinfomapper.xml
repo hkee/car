@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectSupply" parameterType="String" resultType="com.vo.MaintenanceInfo">
-	select m.change_st, m.part_id, l.mile-m.mile as mile ,p.part_name,  round((l.mile-m.mile) / m.change_st *100) as avg from MAINTENANCE_INFO m, car_location l ,part_info p where m.car_num = l.car_num and p.part_id=m.PART_ID and m.car_num=#{car_num}
+	select m.main_seq, m.change_st, m.part_id, l.mile-m.mile as mile ,p.part_name,  round((l.mile-m.mile) / m.change_st *100) as avg from MAINTENANCE_INFO m, car_location l ,part_info p where m.car_num = l.car_num and p.part_id=m.PART_ID and m.car_num=#{car_num} order by avg desc
 	
 	</select>
 	
@@ -32,6 +32,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	
 	<update id="updateST">
 		UPDATE maintenance_info SET change_st=#{change_st} WHERE main_seq=#{main_seq}
+	</update>
+	<update id="updateMile">
+		UPDATE maintenance_info SET mile=#{mile},change_time=sysdate WHERE main_seq=#{main_seq}
 	</update>
 	<delete id="delete">
 		DELETE FROM maintenance_info WHERE car_num=#{car_num}
