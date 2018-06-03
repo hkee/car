@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.AnalysisMapper">
+		
+	<select id="select" parameterType="String" resultType="com.vo.AnalysisInfo">
+		<![CDATA[ 
+		select reg_date,n,ne,e,se,s,sw,w,nw,mile,oil from(select * from analysis_info order by reg_date desc)
+		where car_num=#{car_num} and rownum<=1
+		]]> 
+	</select>
+	
+</mapper>
+   

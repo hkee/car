@@ -39,47 +39,7 @@
 <script src="resources/devoops/plugins/tinymce/tinymce.min.js"></script>
 <script src="resources/devoops/plugins/tinymce/jquery.tinymce.min.js"></script>
 <!-- All functions for this theme + document.ready processing -->
-<style>
-.GaugeMeter {
-  position: Relative;
-  text-align: Center;
-  overflow: Hidden;
-  cursor: Default;
-  display: inline-block;
-}
 
-.GaugeMeter SPAN, .GaugeMeter B {
-  width: 54%;
-  position: Absolute;
-  text-align: Center;
-  display: Inline-Block;
-  color: RGBa(0,0,0,.8);
-  font-weight: 100;
-  font-family: "Open Sans", Arial;
-  overflow: Hidden;
-  white-space: NoWrap;
-  text-overflow: Ellipsis;
-  margin: 0 23%;
-}
-
-.GaugeMeter[data-style="Semi"] B {
-  width: 80%;
-  margin: 0 10%;
-}
-
-.GaugeMeter S, .GaugeMeter U {
-  text-decoration: None;
-  font-size: .60em;
-  font-weight: 200;
-  opacity: .6;
-}
-
-.GaugeMeter B {
-  color: #000;
-  font-weight: 200;
-  opacity: .8;
-}
-</style>
 </head>
 <body style="background-color: white;">
 	
@@ -93,7 +53,7 @@
 <button type="button" class="btn btn-primary btn-sm">차량상태</button>
 <button type="button" class="btn btn-success btn-sm">연&nbsp;&nbsp;&nbsp;비</button>
 </center>
-<c:forEach items="${splist}" var="supplyVo"> 
+<%-- <c:forEach items="${splist}" var="supplyVo"> 
 <div class="col-xs-12 col-sm-4">
 		
 		<div class="box box-pricing">
@@ -104,47 +64,77 @@
 		</div>
 </div>
 
-</c:forEach>
-</div>
-	<%-- <table class="table" >
-					<thead>
-						<tr>
-							<th><font color="#5783A8">#</font></th>
+</c:forEach> --%>
 
-							<th><font color="#5783A8">Part Name</font></th>
-							<th><font color="#5783A8">replacement cycle</font></th>
-							<th><font color="#5783A8">submit</font></th>
-						</tr>
-					</thead>
-					<tbody>
-					
-					<c:forEach items="${stlist}" var="stlistVO"> 
-					<form method="get" action="replaceSt.do">
-					<tr>
-							<td style="width:10%;">${stlistVO.main_seq}<input type="hidden" name="main_seq" value="${stlistVO.main_seq}">
-							<input type="hidden" name="car_num" value="${stlistVO.car_num}">
-							</td>
-							<td style="width:45%;">${stlistVO.part_name}</td>
-							<td style="width:30%;"><input style="width:70%" type="NUMBER" placeholder="${stlistVO.change_st}" name="change_st">km</td>
-							<td style="width:15%;"><button type="submit" class="btn btn-primary btn-app-sm btn-circle"><i class="fa fa-edit"></i></button></td>
-						</tr>
-					</form>
-					</c:forEach> 
-						
-			
-					</tbody>
-				</table> --%>
+<div id="container" style="min-width: 300px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+
+
+</div>
+
 				
 
 	<br>
+	<br> 충격정보그래프임
 	<br>
 	<br>
-	<br>
-		<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="view/GaugeMeter.js"></script>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script>
-$(".GaugeMeter").gaugeMeter();
+
+Highcharts.chart('container', {
+
+    chart: {
+        polar: true,
+        type: 'line',
+        backgroundColor:'none'
+        
+    },
+
+    title: {
+        text: '차량 상태',
+        x: -80
+    },
+
+    pane: {
+        size: '80%'
+    },
+
+    xAxis: {
+        categories: ['북', '북동', '동', '남동','남','남서','서','북서'
+           ],
+        tickmarkPlacement: 'on',
+        lineWidth: 0
+    },
+
+    yAxis: {
+        gridLineInterpolation: 'polygon',
+        lineWidth: 0,
+        min: 0
+    },
+
+    tooltip: {
+        shared: true,
+        pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}</b><br/>'
+    },
+
+    legend: {
+        align: 'right',
+        verticalAlign: 'top',
+        y: 70,
+        layout: 'vertical'
+    },
+
+    series: [{
+        name: '충격 횟수',
+        data: [${hit.n}, ${hit['ne']}, ${hit.e}, ${hit.se}, ${hit.s}, ${hit.sw},${hit.w},${hit.nw}],
+        pointPlacement: 'on'
+    }]
+
+});
+
 </script>
 </body>
 </html>

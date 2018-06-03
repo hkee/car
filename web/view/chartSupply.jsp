@@ -90,7 +90,7 @@
 		${param.car_type}</font></label></h3> 
 	<center>
 	<button type="button" class="btn btn-info btn-sm" onclick = "location.href ='diagnosis.do?car_num=${param.car_num}&car_type=${param.car_type}'">소모품</button>
-<button type="button" class="btn btn-primary btn-sm">차량상태</button>
+<button type="button" class="btn btn-primary btn-sm"  onclick = "location.href ='getAnalysis.do?car_num=${param.car_num}&car_type=${param.car_type}'">차량상태</button>
 <button type="button" class="btn btn-success btn-sm">연&nbsp;&nbsp;&nbsp;비</button>
 </center>
 <c:forEach items="${splist}" var="supplyVo"> 
