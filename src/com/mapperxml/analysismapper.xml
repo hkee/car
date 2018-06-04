@@ -10,6 +10,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		where car_num=#{car_num} and rownum<=1
 		]]> 
 	</select>
-	
+	<select id="selectMileage" parameterType="String" resultType="com.vo.AnalysisInfo">
+		<![CDATA[ 
+		select sum(oil) as oil,(max(mile)-min(mile)) as mile,to_char(reg_date,'YYYY-MM') as reg_date 
+		from analysis_info where car_num=#{car_num} 
+		group by to_char(reg_date,'YYYY-MM') order by reg_date
+		]]> 
+	</select>
 </mapper>
    

@@ -139,17 +139,7 @@
 							
 							</c:forEach> 
 						</ul></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle">
-							<i class="fa fa-table"></i> <span class="hidden-xs">Tables</span>
-					</a>
-						<ul class="dropdown-menu">
-							<li><a class="ajax-link" href="ajax/tables_simple.html">Simple
-									Tables</a></li>
-							<li><a class="ajax-link" href="ajax/tables_datatables.html">Data
-									Tables</a></li>
-							<li><a class="ajax-link" href="ajax/tables_beauty.html">Beauty
-									Tables</a></li>
-						</ul></li>
+				
 					<li class="dropdown"><a href="#" class="dropdown-toggle">
 							<i class="fa fa-pencil-square-o"></i> <span class="hidden-xs">Settings</span>
 					</a>

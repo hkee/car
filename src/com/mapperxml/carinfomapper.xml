@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insert" >
-		INSERT INTO car_info VALUES (#{car_num},#{member_seq},#{car_type},#{insurance},#{year},#{ins_register})
+		INSERT INTO car_info VALUES (#{car_num},#{member_seq},#{car_type},#{insurance},#{year},#{ins_register},#{reg_num},#{score})
 	</insert>
 	<update id="update">
 		UPDATE car_info SET member_seq=#{member_seq},insurance=#{insurance},ins_register=#{ins_register} WHERE car_num=#{car_num}

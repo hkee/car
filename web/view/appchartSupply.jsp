@@ -81,7 +81,7 @@
 }
 </style>
 </head>
-<body style="background-color: white;">
+<body style="background-color: #FBFBF0;">
 	
 	<div class="box-content">
 	<%-- <h4 class="page-header">Supply Replacement Cycle Settings :
@@ -89,9 +89,9 @@
 		 <h3 class="page-header"><label class="control-label" ><font color="#315D80"><i class="fa fa-stethoscope"></i> 차량 상태 진단 :
 		${param.car_type}</font></label></h3> 
 	<center>
-	<button type="button" class="btn btn-info btn-sm">소모품</button>
-<button type="button" class="btn btn-primary btn-sm">차량상태</button>
-<button type="button" class="btn btn-success btn-sm">연&nbsp;&nbsp;&nbsp;비</button>
+	<button type="button" class="btn btn-info btn-sm "onclick = "location.href ='appdiagnosis.do?car_num=${param.car_num}&car_type=${param.car_type}'">소모품</button>
+<button type="button" class="btn btn-primary btn-sm" onclick = "location.href ='appgetAnalysis.do?car_num=${param.car_num}&car_type=${param.car_type}'">차량상태</button>
+<button type="button" class="btn btn-success btn-sm" onclick = "location.href ='appgetMileage.do?car_num=${param.car_num}&car_type=${param.car_type}'">연&nbsp;&nbsp;&nbsp;비</button>
 </center>
 <c:forEach items="${splist}" var="supplyVo"> 
 <div class="col-xs-12 col-sm-4">
@@ -100,6 +100,7 @@
  					<center><div class="GaugeMeter" id="PreviewGaugeMeter_2" data-percent="${supplyVo.avg}" data-append="%" data-size="200" data-theme="Green-Gold-Red" data-back="RGBa(0,0,0,.1)" data-animate_gauge_colors="1" data-animate_text_colors="1" data-width="15" data-label="${supplyVo.part_name }" data-style="Arch" data-label_color="
 #5783A8"></div> </center>
 <c:if test="${supplyVo.avg >= 100}" ><center><b>소모품을 교체해 주세요!!</b></center></c:if>
+<c:if test="${supplyVo.avg < 100}" ><br></c:if>
 		</div>
 </div>
 

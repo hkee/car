@@ -41,7 +41,7 @@
 <!-- All functions for this theme + document.ready processing -->
 
 </head>
-<body style="background-color: white;">
+<body style="background-color: #FBFBF0;">
 	
 	<div class="box-content">
 	<%-- <h4 class="page-header">Supply Replacement Cycle Settings :
@@ -49,9 +49,9 @@
 		 <h3 class="page-header"><label class="control-label" ><font color="#315D80"><i class="fa fa-stethoscope"></i> 차량 상태 진단 :
 		${param.car_type}</font></label></h3> 
 	<center>
-	<button type="button" class="btn btn-info btn-sm" onclick = "location.href ='diagnosis.do?car_num=${param.car_num}&car_type=${param.car_type}'">소모품</button>
-<button type="button" class="btn btn-primary btn-sm"  onclick = "location.href ='getAnalysis.do?car_num=${param.car_num}&car_type=${param.car_type}'">차량상태</button>
-<button type="button" class="btn btn-success btn-sm" onclick = "location.href ='getMileage.do?car_num=${param.car_num}&car_type=${param.car_type}'">연&nbsp;&nbsp;&nbsp;비</button>
+	<button type="button" class="btn btn-info btn-sm" onclick = "location.href ='appdiagnosis.do?car_num=${param.car_num}&car_type=${param.car_type}'">소모품</button>
+<button type="button" class="btn btn-primary btn-sm" onclick = "location.href ='appgetAnalysis.do?car_num=${param.car_num}&car_type=${param.car_type}'">차량상태</button>
+<button type="button" class="btn btn-success btn-sm" onclick = "location.href ='appgetMileage.do?car_num=${param.car_num}&car_type=${param.car_type}'">연&nbsp;&nbsp;&nbsp;비</button>
 </center>
 <%-- <c:forEach items="${splist}" var="supplyVo"> 
 <div class="col-xs-12 col-sm-4">

@@ -1,5 +1,7 @@
 package com.analysis;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -19,7 +21,10 @@ public class AnalysisDao {
 		return mapper.select(s);
 	}
 
-	
+	public List<AnalysisInfo> selectMileage(String s) {
+		// TODO Auto-generated method stub
+		return mapper.selectMileage(s);
+	}
 
 	
 

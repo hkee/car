@@ -91,7 +91,7 @@
 	<center>
 	<button type="button" class="btn btn-info btn-sm" onclick = "location.href ='diagnosis.do?car_num=${param.car_num}&car_type=${param.car_type}'">소모품</button>
 <button type="button" class="btn btn-primary btn-sm"  onclick = "location.href ='getAnalysis.do?car_num=${param.car_num}&car_type=${param.car_type}'">차량상태</button>
-<button type="button" class="btn btn-success btn-sm">연&nbsp;&nbsp;&nbsp;비</button>
+<button type="button" class="btn btn-success btn-sm" onclick = "location.href ='getMileage.do?car_num=${param.car_num}&car_type=${param.car_type}'">연&nbsp;&nbsp;&nbsp;비</button>
 </center>
 <c:forEach items="${splist}" var="supplyVo"> 
 <div class="col-xs-12 col-sm-4">
